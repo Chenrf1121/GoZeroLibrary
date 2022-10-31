@@ -1,0 +1,37 @@
+syntax = "v1"
+
+info(
+	title: "type title here"
+	desc: "type desc here"
+	author: "type author here"
+	email: "type email here"
+	version: "type version here"
+)
+
+type (
+	borrowReq {
+		Name string `form:"name"`
+	}
+	borrowResq {
+		Status bool `json:"ok"`
+	}
+)
+
+type (
+	returnReq {
+		Name string `form:"name"`
+	}
+	returnResq {
+		Status bool `json:"ok"`
+	}
+)
+
+@server(
+	jwt: Auth
+)
+service borrow-api {
+	@handler borrow // TODO: replace handler name and delete this comment
+	post /borrow (borrowReq) returns(borrowResq)
+	@handler return
+	post /return (returnReq) returns(returnResq)
+}

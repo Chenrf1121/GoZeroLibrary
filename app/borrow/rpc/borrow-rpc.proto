@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package borrow;
+option go_package="./borrow";
+
+message BorrwoIdReq {
+  string Id = 1;
+
+}
+
+
+message BorrowInfoResp {
+  string UserId = 1;
+  string BookId = 2;
+  int32 Isreturn =3;
+  string BorrowTime = 4;
+  string ReturnTime = 5;
+}
+message BorrowListResp{
+   repeated BorrowInfoResp List = 1;
+}
+
+service SearchAll {
+  rpc searchAll(BorrwoIdReq) returns (BorrowListResp);
+}

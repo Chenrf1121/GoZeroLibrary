@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package login;
+option go_package="./login";
+
+message IdReq {
+  string Id = 1;
+}
+
+message IdResp {
+  string Id = 1;
+  string Number = 4;
+  string Name = 2;
+  string Gender = 3;
+}
+
+service Login {
+  rpc login(IdReq) returns (IdResp);
+}

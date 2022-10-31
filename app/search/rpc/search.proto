@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package search;
+option go_package="./search";
+
+message SearchReq {
+  string Name = 1;
+}
+
+message SearchResp {
+  int64 Id = 1;
+  int32 Count_now = 2;
+}
+
+message BorrowReq {
+  int64 Id = 1;
+}
+
+message BorrwoResp {
+  bool status = 1;
+}
+
+message ReturnReq {
+  int64 Id = 1;
+}
+
+message ReturnResp {
+  bool status = 1;
+}
+
+
+
+service Search {
+  rpc search(SearchReq) returns (SearchResp);
+  rpc borrow(BorrowReq) returns (BorrwoResp);
+  rpc return(ReturnReq) returns (ReturnResp);
+}

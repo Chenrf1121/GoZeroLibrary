@@ -1,0 +1,32 @@
+syntax = "v1"
+//用于浏览用户借阅的书
+info(
+	title: "type title here"
+	desc: "type desc here"
+	author: "type author here"
+	email: "type email here"
+	version: "type version here"
+)
+type (
+	Hisreq {
+		Tag bool `form:"tag"`
+	}
+	Hisresp {
+		UserId     string `json:"userId"`
+		BookId     string `json:"bookId"`
+		IsReturn   int32  `json:"isReturn"`
+		BorrowTime string `json:"borrowTime"`
+		ReturnTime string `json:"returnTime"`
+	}
+	HistoryListResp {
+		List []Hisresp `json:"list"`
+	}
+)
+
+@server(
+	jwt: Auth
+)
+service history-api {
+	@handler history // TODO: replace handler name and delete this comment
+	get /history (Hisreq) returns(HistoryListResp)
+}

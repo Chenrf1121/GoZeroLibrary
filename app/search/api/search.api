@@ -1,0 +1,42 @@
+syntax = "v1"
+
+info(
+	title: "type title here"
+	desc: "type desc here"
+	author: "type author here"
+	email: "type email here"
+	version: "type version here"
+)
+
+type (
+	SearchReq {
+		Name string `form:"name"`
+	}
+	SearchResp {
+		Name      string `json:"name"`
+		Count     int    `json:"count"`
+		Count_now int    `json:"count_now"`
+	}
+)
+
+type (
+	AddReq {
+		Name  string `form:"name"`
+		Count int    `form:"count"`
+	}
+	AddResp {
+		Ok bool `json:"ok"`
+	}
+)
+@server(
+	jwt: Auth
+	middleware: Example
+)
+
+service search-api {
+	@handler search
+	post /search/do (SearchReq) returns(SearchResp)
+	@handler add
+	post /search/add (AddReq) returns(AddResp)
+	@handler findall
+}

@@ -1,0 +1,19 @@
+Name: history-api
+Host: 0.0.0.0
+Port: 8891
+Mysql:
+  DataSource: root:123456@tcp(127.0.0.1:13306)/gozero?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+CacheRedis:
+  - Host: 127.0.0.1:6379
+    Pass:
+    Type: node
+
+Auth:
+  AccessSecret: qazxsw1234
+  AccessExpire: 3600
+
+BorrowRpc:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: borrowrpc.rpc

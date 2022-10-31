@@ -1,0 +1,43 @@
+syntax = "v1"
+
+info(
+	title: "type title here"
+	desc: "type desc here"
+	author: "type author here"
+	email: "type email here"
+	version: "type version here"
+)
+
+type (
+	loginReq {
+		Id       string `form:"id"`
+		Password string `form:"password"`
+	}
+	loginResq {
+		Id           string `json:"id"`
+		Name         string `json:"name"`
+		Gender       string `json:"gender"`
+		AccessToken  string `json:"accessToken"`
+		AccessExpire int64  `json:"accessExpire"`
+		RefreshAfter int64  `json:"refreshAfter"`
+	}
+)
+
+type (
+	signupReq {
+		Id       string `form:"id"`
+		Password string `form:"password"`
+		Name     string `form:"name"`
+		Gender   string `form:"gender"`
+	}
+	singupResq {
+		Ok bool `json:"ok"`
+	}
+)
+
+service login-api {
+	@handler login // TODO: replace handler name and delete this comment
+	post /login (loginReq) returns(loginResq)
+	@handler sing_up
+	post /signup (signupReq) returns(singupResq)
+}
