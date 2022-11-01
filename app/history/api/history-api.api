@@ -1,11 +1,11 @@
 syntax = "v1"
 //用于浏览用户借阅的书
 info(
-	title: "type title here"
-	desc: "type desc here"
-	author: "type author here"
-	email: "type email here"
-	version: "type version here"
+	title: "查看借阅历史"
+	desc: "查看借阅历史"
+	author: "chenrufeng"
+	email: "304635313@qq.com"
+	version: "v1"
 )
 type (
 	Hisreq {
