@@ -13,7 +13,7 @@ WORKDIR /build
 ADD go.mod .
 ADD go.sum .
 RUN go mod download
-COPY . .
+COPY app/login/api .
 COPY app/login/api/etc /app/etc
 RUN go build -ldflags="-s -w" -o /app/login app/login/api/login.go
 
